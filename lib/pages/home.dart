@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../BusinessLayer/painel.dart';
+import 'package:relax_sounds/BusinessLayer/painel.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -28,13 +28,36 @@ class _HomeState extends State<Home> {
                 end: Alignment.bottomCenter,
                 colors: [Colors.blue[400], Colors.indigo[900]])),
         child: Padding(
-          padding: const EdgeInsets.only(top: 90.0),
-          child: Container(
-            alignment: Alignment.topCenter,
-            child: Text(
-              "Relax Sounds",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 90.0, bottom: 50.0),
+                child: Container(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    "Relax Sounds",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Chuva",
+                        style: TextStyle(fontSize: 28.0),
+                      ),
+                      Row(
+                        children: [
+                          Painel(),
+                        ],
+                      )
+                    ],
+                  )),
+            ],
           ),
         ),
       )),
