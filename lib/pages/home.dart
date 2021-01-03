@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:relax_sounds/BusinessLayer/painel.dart';
+import 'package:relax_sounds/BusinessLayer/textoBotao.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,11 +14,6 @@ class _HomeState extends State<Home> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.indigo,
-        accentColor: Colors.teal[300],
-        textTheme: TextTheme(bodyText2: TextStyle(color: Colors.purple[50])),
-      ),
       home: Scaffold(
           body: Container(
         width: double.infinity,
@@ -52,9 +48,55 @@ class _HomeState extends State<Home> {
                       ),
                       Row(
                         children: [
-                          Painel(),
+                          Column(
+                            children: [
+                              Painel("lib/assets/chuva_bg4.jpg"),
+                              TextoBotao("Tempestade")
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Painel("lib/assets/chuva_bg2.jpg"),
+                              TextoBotao("Na rua"),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Painel("lib/assets/chuva_bg3.jpg"),
+                              TextoBotao("Calminha")
+                            ],
+                          ),
                         ],
-                      )
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Text(
+                        "Natureza",
+                        style: TextStyle(fontSize: 28.0),
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Painel("lib/assets/natureza_bg1.jpg"),
+                              TextoBotao("Passarinhos")
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Painel("lib/assets/natureza_bg2.jpg"),
+                              TextoBotao("Floresta"),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Painel("lib/assets/natureza_bg3.jpg"),
+                              TextoBotao("Cachoeira")
+                            ],
+                          ),
+                        ],
+                      ),
                     ],
                   )),
             ],
