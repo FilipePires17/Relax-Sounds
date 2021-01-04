@@ -19,6 +19,7 @@ class Painel extends StatelessWidget {
           ),
         ),
         child: RaisedButton(
+          elevation: 0.0,
           color: Color.fromRGBO(256, 256, 256, 0),
           onPressed: () => {},
         ),
