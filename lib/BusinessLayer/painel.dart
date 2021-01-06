@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:relax_sounds/pages/player.dart';
 
 class Painel extends StatelessWidget {
   final String imagem;
+
+  Player playerData;
 
   Painel(this.imagem);
 
@@ -15,13 +18,13 @@ class Painel extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(imagem),
+            image: AssetImage('assets/' + imagem + '.jpg'),
           ),
         ),
         child: RaisedButton(
           elevation: 0.0,
           color: Color.fromRGBO(256, 256, 256, 0),
-          onPressed: () => {},
+          onPressed: () {},
         ),
       ),
     );

@@ -4,7 +4,7 @@ import './pages/home.dart';
 import 'pages/player.dart';
 
 void main() {
-  runApp(MyApp2());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +29,7 @@ class MyApp2 extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Player('', ''),
+      home: Player(false),
     );
   }
 }

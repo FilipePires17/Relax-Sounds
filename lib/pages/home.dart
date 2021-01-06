@@ -4,6 +4,7 @@ import 'package:relax_sounds/BusinessLayer/scroll_chuva.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_mar.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_natureza.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_urbano.dart';
+import 'package:relax_sounds/pages/player.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Player playerData = Player(false);
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -48,7 +50,7 @@ class _HomeState extends State<Home> {
                           "Chuva",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollChuva(),
+                        ScrollChuva(playerData),
                         SizedBox(
                           height: 25,
                         ),
@@ -56,7 +58,7 @@ class _HomeState extends State<Home> {
                           "Natureza",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollNatureza(),
+                        ScrollNatureza(playerData),
                         SizedBox(
                           height: 25,
                         ),
@@ -64,7 +66,7 @@ class _HomeState extends State<Home> {
                           "Urbano",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollUrbano(),
+                        ScrollUrbano(playerData),
                         SizedBox(
                           height: 25,
                         ),
@@ -72,7 +74,7 @@ class _HomeState extends State<Home> {
                           "Mar",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollMar(),
+                        ScrollMar(playerData),
                       ],
                     )),
               ],

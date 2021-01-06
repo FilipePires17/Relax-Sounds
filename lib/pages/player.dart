@@ -1,22 +1,47 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class Player extends StatefulWidget {
-  final String imagem;
-  final String audio;
+  bool isPlaying;
 
-  Player(this.imagem, this.audio);
+  Player(this.isPlaying);
 
   @override
-  _PlayerState createState() => _PlayerState(imagem, audio);
+  _PlayerState createState() => _PlayerState(isPlaying);
 }
 
 class _PlayerState extends State<Player> {
-  final String imagem;
-  final String audio;
-
-  _PlayerState(this.imagem, this.audio);
-
+  String _imagem;
+  String audio;
+  bool _isPlaying;
   double _currentSliderValue = 0;
+  IconData playButton = Icons.pause;
+  AudioPlayer _player;
+  AudioCache cache;
+
+  _PlayerState(this._isPlaying);
+
+  @override
+  void initState() {
+    super.initState();
+    _player = AudioPlayer();
+    _player.setReleaseMode(ReleaseMode.LOOP);
+    cache = AudioCache(fixedPlayer: _player);
+  }
+
+  set imagem(String _imagem) {
+    this._imagem = _imagem;
+  }
+
+  set isPlaying(bool _isPlaying) {
+    this._isPlaying = _isPlaying;
+  }
+
+  bool get isPlaying {
+    return _isPlaying;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +50,7 @@ class _PlayerState extends State<Player> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("lib/assets/" + 'chuva_bg2.jpg'),
+            image: AssetImage("assets/" + _imagem + '.jpg'),
             fit: BoxFit.fill,
           ),
         ),
@@ -42,10 +67,24 @@ class _PlayerState extends State<Player> {
                 ),
                 IconButton(
                   iconSize: 90,
-                  icon: Icon(Icons.pause),
-                  onPressed: () => {},
+                  icon: Icon(playButton),
+                  onPressed: () {
+                    if (isPlaying) {
+                      setState(() {
+                        _player.pause();
+                        isPlaying = false;
+                        playButton = Icons.play_arrow;
+                      });
+                    } else {
+                      setState(() {
+                        cache.play("chuva_audio3.wav");
+                        isPlaying = true;
+                        playButton = Icons.pause;
+                      });
+                    }
+                  },
                 ),
-                IconButton(icon: Icon(Icons.access_time), onPressed: () => {}),
+                IconButton(icon: Icon(Icons.access_time), onPressed: () {}),
               ],
             ),
             SizedBox(
@@ -61,6 +100,7 @@ class _PlayerState extends State<Player> {
                 label: _currentSliderValue.round().toString(),
                 onChanged: (double value) {
                   setState(() {
+                    _player.setVolume(value * 0.01);
                     _currentSliderValue = value;
                   });
                 },
