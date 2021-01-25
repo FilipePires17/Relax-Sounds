@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Classe temporária enquanto os botões não funcionam
 class MyApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

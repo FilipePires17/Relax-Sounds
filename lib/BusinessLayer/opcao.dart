@@ -28,7 +28,9 @@ class Opcao extends StatelessWidget {
               elevation: 0.0,
               color: Color.fromRGBO(256, 256, 256, 0),
               onPressed: () {
-                if (playerData.isPlaying) {}
+                if (playerData.isPlaying) {
+                  //playerData._player.stop();
+                }
               },
             ),
           ),
