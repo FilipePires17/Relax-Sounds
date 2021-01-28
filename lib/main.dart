@@ -1,13 +1,32 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import './pages/home.dart';
-import 'pages/player.dart';
+
+/* Organizar as pastas, organizar instancias, alterar nomes, melhorar o codigo */
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  AudioPlayer player;
+  AudioCache cache;
+  bool isPlaying = false;
+
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+    player.setReleaseMode(ReleaseMode.LOOP);
+    cache = AudioCache(fixedPlayer: player);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,19 +37,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
-    );
-  }
-}
-
-// Classe temporária enquanto os botões não funcionam
-class MyApp2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Player(false),
+      home: Home(player, cache),
     );
   }
 }

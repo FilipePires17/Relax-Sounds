@@ -1,18 +1,21 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_chuva.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_mar.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_natureza.dart';
 import 'package:relax_sounds/BusinessLayer/scroll_urbano.dart';
-import 'package:relax_sounds/pages/player.dart';
 
 class Home extends StatefulWidget {
+  final AudioPlayer player;
+  final AudioCache cache;
+  Home(this.player, this.cache);
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  Player playerData = Player(false);
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -50,7 +53,7 @@ class _HomeState extends State<Home> {
                           "Chuva",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollChuva(playerData),
+                        ScrollChuva(),
                         SizedBox(
                           height: 25,
                         ),
@@ -58,7 +61,7 @@ class _HomeState extends State<Home> {
                           "Natureza",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollNatureza(playerData),
+                        ScrollNatureza(),
                         SizedBox(
                           height: 25,
                         ),
@@ -66,7 +69,7 @@ class _HomeState extends State<Home> {
                           "Urbano",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollUrbano(playerData),
+                        ScrollUrbano(),
                         SizedBox(
                           height: 25,
                         ),
@@ -74,7 +77,7 @@ class _HomeState extends State<Home> {
                           "Mar",
                           style: TextStyle(fontSize: 28.0),
                         ),
-                        ScrollMar(playerData),
+                        ScrollMar(),
                       ],
                     )),
               ],

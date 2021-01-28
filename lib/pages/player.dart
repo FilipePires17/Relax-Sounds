@@ -3,32 +3,18 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class Player extends StatefulWidget {
-  bool isPlaying;
-
-  Player(this.isPlaying);
-
   @override
-  _PlayerState createState() => _PlayerState(isPlaying);
+  _PlayerState createState() => _PlayerState();
 }
 
 class _PlayerState extends State<Player> {
-  String _imagem;
-  String audio;
-  bool _isPlaying;
+  String _imagem = "chuva_bg";
+  String audio = "chuva_audio3.wav";
+  bool _isPlaying = true;
   double _currentSliderValue = 0;
   IconData playButton = Icons.pause;
   AudioPlayer _player;
   AudioCache cache;
-
-  _PlayerState(this._isPlaying);
-
-  @override
-  void initState() {
-    super.initState();
-    _player = AudioPlayer();
-    _player.setReleaseMode(ReleaseMode.LOOP);
-    cache = AudioCache(fixedPlayer: _player);
-  }
 
   set imagem(String _imagem) {
     this._imagem = _imagem;
@@ -77,7 +63,7 @@ class _PlayerState extends State<Player> {
                       });
                     } else {
                       setState(() {
-                        cache.play("chuva_audio3.wav");
+                        cache.play(audio);
                         isPlaying = true;
                         playButton = Icons.pause;
                       });

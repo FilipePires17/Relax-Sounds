@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:relax_sounds/pages/player.dart';
+import '../pages/player.dart';
 //import 'package:relax_sounds/BusinessLayer/painel.dart';
 //import 'package:relax_sounds/BusinessLayer/textoBotao.dart';
 
 class Opcao extends StatelessWidget {
   final String imagem;
   final String texto;
-  final Player playerData;
 
-  Opcao(this.imagem, this.texto, this.playerData);
+  Opcao(
+    this.imagem,
+    this.texto,
+  );
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,9 +30,8 @@ class Opcao extends StatelessWidget {
               elevation: 0.0,
               color: Color.fromRGBO(256, 256, 256, 0),
               onPressed: () {
-                if (playerData.isPlaying) {
-                  //playerData._player.stop();
-                }
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Player()));
               },
             ),
           ),
