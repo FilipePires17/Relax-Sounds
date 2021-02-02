@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pages/player.dart';
-//import 'package:relax_sounds/BusinessLayer/painel.dart';
-//import 'package:relax_sounds/BusinessLayer/textoBotao.dart';
+import 'package:relax_sounds/ViewLayer/view/player.dart';
 
 class Opcao extends StatelessWidget {
   final String imagem;

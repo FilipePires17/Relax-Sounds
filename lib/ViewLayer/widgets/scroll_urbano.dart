@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:relax_sounds/pages/player.dart';
-import 'opcao.dart';
+import 'package:relax_sounds/BusinessLayer/Objects/opcao.dart';
 
 class ScrollUrbano extends StatelessWidget {
   ScrollUrbano();

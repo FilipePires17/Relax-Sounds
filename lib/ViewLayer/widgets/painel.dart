@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:relax_sounds/pages/player.dart';
+import 'package:relax_sounds/viewLayer/view/player.dart';
 
 class Painel extends StatelessWidget {
   final String imagem;

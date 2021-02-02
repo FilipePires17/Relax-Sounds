@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import './pages/home.dart';
+import 'viewLayer/view/home.dart';
 
 /* Organizar as pastas, organizar instancias, alterar nomes, melhorar o codigo */
 
@@ -15,18 +15,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  AudioPlayer player;
-  AudioCache cache;
-  bool isPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-    player = AudioPlayer();
-    player.setReleaseMode(ReleaseMode.LOOP);
-    cache = AudioCache(fixedPlayer: player);
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(player, cache),
+      home: Home(),
     );
   }
 }

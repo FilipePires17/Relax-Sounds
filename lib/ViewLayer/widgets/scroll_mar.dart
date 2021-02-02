@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'opcao.dart';
+import 'package:relax_sounds/BusinessLayer/Objects/opcao.dart';
 
 class ScrollMar extends StatelessWidget {
   ScrollMar();

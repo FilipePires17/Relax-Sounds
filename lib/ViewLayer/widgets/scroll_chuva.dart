@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:relax_sounds/BusinessLayer/opcao.dart';
+import 'package:relax_sounds/BusinessLayer/Objects/opcao.dart';
 
 class ScrollChuva extends StatelessWidget {
   ScrollChuva();

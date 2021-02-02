@@ -1,16 +1,13 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
+import '../../BusinessLayer/Objects/playerObject.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:relax_sounds/BusinessLayer/scroll_chuva.dart';
-import 'package:relax_sounds/BusinessLayer/scroll_mar.dart';
-import 'package:relax_sounds/BusinessLayer/scroll_natureza.dart';
-import 'package:relax_sounds/BusinessLayer/scroll_urbano.dart';
+import 'package:relax_sounds/ViewLayer/widgets/scroll_chuva.dart';
+import 'package:relax_sounds/ViewLayer/widgets/scroll_mar.dart';
+import 'package:relax_sounds/ViewLayer/widgets/scroll_natureza.dart';
+import 'package:relax_sounds/ViewLayer/widgets/scroll_urbano.dart';
 
 class Home extends StatefulWidget {
-  final AudioPlayer player;
-  final AudioCache cache;
-  Home(this.player, this.cache);
+  Home();
   @override
   _HomeState createState() => _HomeState();
 }
