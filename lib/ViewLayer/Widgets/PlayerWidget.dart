@@ -1,54 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../../BusinessLogicLayer/Objects/Player.dart';
 
+Widget playButton() {
+  Player player = Player();
+  return IconButton(
+    padding: EdgeInsets.all(0),
+    icon: (true)
+        ? Icon(
+            Icons.pause,
+            color: Colors.pink[200],
+            size: 50.0,
+          )
+        : Icon(
+            Icons.play_arrow,
+            color: Colors.pink[200],
+            size: 50.0,
+          ),
+    onPressed: () {
+      player.cache.play("chuva_audio3.wav");
+    },
+  );
+}
 
-Widget aindanaoseionome(){
+Widget timer() {
+  return IconButton(
+    icon: Icon(
+      Icons.watch_rounded,
+      size: 50,
+    ),
+    onPressed: () {},
+  );
+}
+
+Widget controleDeReproducao() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
-      IconButton(
-        padding: EdgeInsets.all(0),
-        icon:Icon(
-          Icons.skip_previous,
-          color: Colors.pink[200],
-          size: 50.0,
-        ),
-        onPressed: () {
-          print("Skip previous");
-        },
+      SizedBox(
+        width: 50,
       ),
-      IconButton(
-        padding: EdgeInsets.all(0),
-        icon: (true) 
-          ? Icon(
-              Icons.pause,
-              color: Colors.pink[200],
-              size: 50.0,
-            )
-          : Icon(
-              Icons.play_arrow,
-              color: Colors.pink[200],
-              size: 50.0,
-          ),
-        onPressed: () {
-        },
-      ),
-      IconButton(
-        padding: EdgeInsets.all(0),
-        icon: Icon(
-          Icons.skip_next,
-          color: Colors.pink[200],
-          size: 50.0,
-        ),
-        onPressed: () {
-          print("skip next");
-        },
-      ),
+      playButton(),
     ],
   );
 }
 
-Widget content(){
+Widget content() {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -70,14 +67,14 @@ Widget content(){
         color: Colors.blue[200],
         child: Padding(
           padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-          child: aindanaoseionome(),
+          child: controleDeReproducao(),
         ),
       )
     ],
   );
 }
 
-Widget body(){
+Widget body() {
   return Container(
     child: Padding(
       padding: const EdgeInsets.all(10),

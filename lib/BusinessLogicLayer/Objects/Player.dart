@@ -1,30 +1,13 @@
-/* import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 
-class Player{
+class Player {
   AudioPlayer audioPlayer;
-  
-  Player(){
+  AudioCache cache;
+
+  Player() {
     audioPlayer = AudioPlayer();
+    cache = AudioCache(fixedPlayer: audioPlayer);
+    audioPlayer.setReleaseMode(ReleaseMode.LOOP);
   }
-
-  Future<int> pause() async{
-    return await audioPlayer.pause();
-  }
-
-  Future<int> resume() async{
-    return await audioPlayer.resume();
-  }
-
-  Future<int> play(url) async{
-    return await audioPlayer.play(url);
-  }
-
-  Future<int> stop() async{
-    return await audioPlayer.stop();
-  }
-
-  Future<int> seek(ms) async{
-      return await audioPlayer.seek(Duration(milliseconds: ms));
-  }
-
-} */
+}
