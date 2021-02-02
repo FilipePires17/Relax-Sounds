@@ -1,0 +1,86 @@
+{
+    "0": {
+        "topic": "Natureza",
+        "images": ["natureza_bg1.jpg", "natureza_bg2.jpg", "natureza_bg3.jpg", "natureza_bg4.jpg"],
+        "info":[
+            {
+                "image": "natureza_bg1.jpg",
+                "song": ""
+            },
+            {
+                "image": "natureza_bg2.jpg",
+                "song": ""
+            },
+            {
+                "image": "natureza_bg3.jpg",
+                "song": ""
+            },
+            {
+                "image": "natureza_bg4.jpg",
+                "song": ""
+            }
+        ]
+    },
+    "1": {
+        "topic": "Chuva",
+        "images": ["chuva_bg.jpg", "chuva_bg2.jpg", "chuva_bg3.jpg", "chuva_bg4.jpg"],
+        "info":[
+            {
+                "image": "chuva_bg.jpg",
+                "song": ""
+            },
+            {
+                "image": "chuva_bg2.jpg",
+                "song": ""
+            },
+            {
+                "image": "chuva_bg3.jpg",
+                "song": ""
+            },
+            {
+                "image": "chuva_bg4.jpg",
+                "song": ""
+            }
+        ]
+    },
+    "2": {
+        "topic": "Mar",
+        "images": ["mar_bg1.jpg", "mar_bg2.jpg", "mar_bg3.jpg"],
+        "info":[
+            {
+                "image": "mar_bg1.jpg",
+                "song": ""
+            },
+            {
+                "image": "mar_bg2.jpg",
+                "song": ""
+            },
+            {
+                "image": "mar_bg3.jpg",
+                "song": ""
+            }
+        ]
+    },
+    "3": {
+        "topic": "Urbano",
+        "images": ["urbano_bg1.jpg", "urbano_bg2.jpg", "urbano_bg3.jpg", "urbano_bg4.jpg"],
+        "info":[
+            {
+                "image": "urbano_bg1.jpg",
+                "song": ""
+            },
+            {
+                "image": "urbano_bg2.jpg",
+                "song": ""
+            },
+            {
+                "image": "urbano_bg3.jpg",
+                "song": ""
+            },
+            {
+                "image": "urbano_bg4.jpg",
+                "song": ""
+            }
+        ]
+    }
+}
