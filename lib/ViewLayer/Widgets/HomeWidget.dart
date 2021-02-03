@@ -11,14 +11,20 @@ Widget option(context, info) {
         Container(
             height: 110,
             width: 150,
-            child: Image.asset(
-              "assets/image/" + info['image'],
-              fit: BoxFit.cover,
+            child: GestureDetector(
+              child: Image.asset(
+                "assets/image/" + info['image'],
+                fit: BoxFit.cover,
+              ),
+              onTap: () {},
             )),
         Container(
           height: 40,
           width: 150,
-          child: Text("Teste1"),
+          child: GestureDetector(
+            child: Text(info['name']),
+            onTap: () {},
+          ),
         )
       ],
     ),
@@ -58,19 +64,26 @@ Widget object(context, snapshot, indexObject) {
 }
 
 Widget body(context, snapshot) {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: ListView.builder(
-        itemCount: snapshot.data.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-            child: Container(
-              height: 200,
-              color: Colors.blue,
-              child: object(context, snapshot, index),
-            ),
-          );
-        }),
+  return Column(
+    children: [
+      Container(
+        child: Text("Relax Sounds"), //TODO melhorar isso pq pelo amor né
+      ),
+      Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Container(
+                  height: 200,
+                  color: Colors.blue,
+                  child: object(context, snapshot, index),
+                ),
+              );
+            }),
+      ),
+    ],
   );
 }

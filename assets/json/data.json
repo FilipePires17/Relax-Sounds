@@ -5,18 +5,22 @@
         "info":[
             {
                 "image": "natureza_bg1.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "natureza_bg2.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "natureza_bg3.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "natureza_bg4.jpg",
+                "name": "Floresta",
                 "song": ""
             }
         ]
@@ -27,18 +31,22 @@
         "info":[
             {
                 "image": "chuva_bg.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "chuva_bg2.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "chuva_bg3.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "chuva_bg4.jpg",
+                "name": "Floresta",
                 "song": ""
             }
         ]
@@ -49,14 +57,17 @@
         "info":[
             {
                 "image": "mar_bg1.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "mar_bg2.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "mar_bg3.jpg",
+                "name": "Floresta",
                 "song": ""
             }
         ]
@@ -67,18 +78,22 @@
         "info":[
             {
                 "image": "urbano_bg1.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "urbano_bg2.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "urbano_bg3.jpg",
+                "name": "Floresta",
                 "song": ""
             },
             {
                 "image": "urbano_bg4.jpg",
+                "name": "Floresta",
                 "song": ""
             }
         ]

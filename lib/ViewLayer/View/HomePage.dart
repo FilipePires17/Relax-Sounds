@@ -11,18 +11,13 @@ class _HomePageState extends State<HomePage> {
   HomeFR homeFR = HomeFR();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Relax Sound"),
-        centerTitle: true,
-      ),
-      body: FutureBuilder<Map>(
+    return FutureBuilder<Map>(
         future: homeFR.getdata(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
@@ -34,21 +29,18 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             default:
-              if (snapshot.hasError){
+              if (snapshot.hasError) {
                 return Container(
                   child: Center(
                     child: Text("Error"),
                   ),
                 );
-              }
-              else{
+              } else {
                 return Container(
-                    child: body(context, snapshot),
+                  child: body(context, snapshot),
                 );
               }
           }
-        }
-      ),
-    );
+        });
   }
 }
