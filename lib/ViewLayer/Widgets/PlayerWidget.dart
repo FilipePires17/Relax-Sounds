@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
+import '../../BusinessLogicLayer/Resources/globalObjects.dart';
 
 class PlayerBar extends StatefulWidget {
   @override
@@ -9,6 +9,8 @@ class PlayerBar extends StatefulWidget {
 
 class _PlayerBarState extends State<PlayerBar> {
   bool _isPlaying = false;
+  
+  Icon playBtn;
 
   bool _getIsPlaying(){
     return _isPlaying;
@@ -35,22 +37,34 @@ class _PlayerBarState extends State<PlayerBar> {
           onPressed: null
         ),
         IconButton(
-            padding: EdgeInsets.all(0),
-            icon: (_getIsPlaying()) 
-              ? Icon(
-                  Icons.pause,
-                  color: Colors.pink[200],
-                  size: 50.0,
-                )
-              : Icon(
-                  Icons.play_arrow,
-                  color: Colors.pink[200],
-                  size: 50.0,
-              ),
-            onPressed: () {
-              setIsPlaying();
-            },
-        ),
+      iconSize: 50.0,
+      padding: EdgeInsets.all(0),
+      onPressed: () {
+        if (!player.getIsPlaying()) {
+          setState(() {
+            playBtn = Icon(
+              Icons.pause,
+              color: Colors.pink[200],
+              size: 50.0,
+            );
+            player.cache.play("chuva_audio3.wav");
+            player.setIsPlaying();
+          });
+        } else {
+          setState(() {
+            playBtn = Icon(
+              Icons.play_arrow,
+              color: Colors.pink[200],
+              size: 50.0,
+            );
+            player.audioPlayer.stop();
+            player.setIsPlaying();
+          });
+        }
+      },
+      icon: playBtn,
+         )
+        
         IconButton(
           padding: EdgeInsets.all(0),
           icon: Icon(
@@ -64,6 +78,7 @@ class _PlayerBarState extends State<PlayerBar> {
     );
   }
 }
+
 
 class VolumeBar extends StatefulWidget {
   @override
@@ -82,6 +97,40 @@ class _VolumeBarState extends State<VolumeBar> {
           Icons.volume_mute,
           color: Colors.blue[200],
           size: 20.0,
+
+Widget timer() {
+  return IconButton(
+    icon: Icon(
+      Icons.watch_rounded,
+      size: 50.0,
+    ),
+    onPressed: () {},
+  );
+}
+
+Widget controleDeReproducao() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      SizedBox(
+        width: 50.0,
+        height: 50.0,
+      ),
+      PlayButton(),
+      timer(),
+    ],
+  );
+}
+
+Widget content() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        color: Colors.green[100],
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+          child: Image.asset("assets/image/mar_bg2.jpg"),
         ),
         Expanded(
           child: Slider.adaptive(
@@ -95,16 +144,22 @@ class _VolumeBarState extends State<VolumeBar> {
             },
           ),
         ),
+        
         Icon(
           Icons.volume_up,
           color: Colors.blue[200],
           size: 20.0,
+      ),
+      Container(
+        color: Colors.blue[200],
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+          child: controleDeReproducao(),
         ),
       ],
     );
   }
 }
-
 
 class Body extends StatelessWidget {
   final Map _data;

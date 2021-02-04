@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:relax_sounds/ViewLayer/View/PlayerPage.dart';
 import '../../BusinessLogicLayer/FunctionalRequirements/HomeFR.dart';
 
-
 class Objects extends StatelessWidget {
   final List _data;
 
@@ -41,7 +40,7 @@ class Objects extends StatelessWidget {
                   Container(
                     height: 40,
                     width: 150,
-                    child: Text("Teste1"),
+                    child: Text(_data[index]['name']),
                   )
                 ],
               ),
@@ -88,7 +87,10 @@ class Content extends StatelessWidget {
                     ),
                     Container(
                       height: 150,
-                      child: Objects(_data['$index']['info']),
+                      child: child: GestureDetector(
+                        child: Text(_data[index]['name']),
+                        onTap: () {},
+                      ),
                     ),
                   ],
                 ),
@@ -101,7 +103,7 @@ class Content extends StatelessWidget {
 }
 
 
-class Body extends StatelessWidget {
+class body extends StatelessWidget {
   HomeFR homeFR = HomeFR();
 
   @override
