@@ -9,14 +9,10 @@ class PlayerBar extends StatefulWidget {
 
 class _PlayerBarState extends State<PlayerBar> {
   bool _isPlaying = false;
-  
+
   Icon playBtn;
 
-  bool _getIsPlaying(){
-    return _isPlaying;
-  }
-  
-  void setIsPlaying(){
+  void setIsPlaying() {
     setState(() {
       _isPlaying = !_isPlaying;
     });
@@ -28,57 +24,53 @@ class _PlayerBarState extends State<PlayerBar> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         IconButton(
+            padding: EdgeInsets.all(0),
+            icon: Icon(
+              Icons.refresh,
+              color: Colors.pink[200],
+              size: 35.0,
+            ),
+            onPressed: null),
+        IconButton(
+          iconSize: 50.0,
           padding: EdgeInsets.all(0),
-          icon: Icon(
-            Icons.refresh,
-            color: Colors.pink[200],
-            size: 35.0,
-          ), 
-          onPressed: null
+          onPressed: () {
+            if (!player.getIsPlaying()) {
+              setState(() {
+                playBtn = Icon(
+                  Icons.pause,
+                  color: Colors.pink[200],
+                  size: 50.0,
+                );
+                player.audioCache.play("chuva_audio3.wav");
+                player.setIsPlaying();
+              });
+            } else {
+              setState(() {
+                playBtn = Icon(
+                  Icons.play_arrow,
+                  color: Colors.pink[200],
+                  size: 50.0,
+                );
+                player.audioPlayer.stop();
+                player.setIsPlaying();
+              });
+            }
+          },
+          icon: playBtn,
         ),
         IconButton(
-      iconSize: 50.0,
-      padding: EdgeInsets.all(0),
-      onPressed: () {
-        if (!player.getIsPlaying()) {
-          setState(() {
-            playBtn = Icon(
-              Icons.pause,
+            padding: EdgeInsets.all(0),
+            icon: Icon(
+              Icons.access_time,
               color: Colors.pink[200],
-              size: 50.0,
-            );
-            player.cache.play("chuva_audio3.wav");
-            player.setIsPlaying();
-          });
-        } else {
-          setState(() {
-            playBtn = Icon(
-              Icons.play_arrow,
-              color: Colors.pink[200],
-              size: 50.0,
-            );
-            player.audioPlayer.stop();
-            player.setIsPlaying();
-          });
-        }
-      },
-      icon: playBtn,
-         )
-        
-        IconButton(
-          padding: EdgeInsets.all(0),
-          icon: Icon(
-            Icons.access_time,
-            color: Colors.pink[200],
-            size: 35.0,
-          ), 
-          onPressed: null
-        ),
+              size: 35.0,
+            ),
+            onPressed: null),
       ],
     );
   }
 }
-
 
 class VolumeBar extends StatefulWidget {
   @override
@@ -90,74 +82,13 @@ class _VolumeBarState extends State<VolumeBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(
-          Icons.volume_mute,
-          color: Colors.blue[200],
-          size: 20.0,
-
-Widget timer() {
-  return IconButton(
-    icon: Icon(
-      Icons.watch_rounded,
-      size: 50.0,
-    ),
-    onPressed: () {},
-  );
-}
-
-Widget controleDeReproducao() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      SizedBox(
-        width: 50.0,
-        height: 50.0,
-      ),
-      PlayButton(),
-      timer(),
-    ],
-  );
-}
-
-Widget content() {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Container(
-        color: Colors.green[100],
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
-          child: Image.asset("assets/image/mar_bg2.jpg"),
-        ),
-        Expanded(
-          child: Slider.adaptive(
-            value: _currentVol,
-            max: 10,
-            min: 0,
-            onChanged: (double d) {
-              setState(() {
-                _currentVol = d;
-              });
-            },
-          ),
-        ),
-        
-        Icon(
-          Icons.volume_up,
-          color: Colors.blue[200],
-          size: 20.0,
-      ),
-      Container(
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Icon(
+        Icons.volume_mute,
         color: Colors.blue[200],
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-          child: controleDeReproducao(),
-        ),
-      ],
-    );
+        size: 20.0,
+      ),
+    ]);
   }
 }
 

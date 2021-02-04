@@ -1,3 +1,3 @@
 import '../Objects/Player.dart';
 
-Player player;
+Player player = Player();

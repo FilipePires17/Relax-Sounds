@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Widgets/PlayerWidget.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:audioplayers/audio_cache.dart';
+import '../../BusinessLogicLayer/Resources/globalObjects.dart';
 //import '../../BusinessLogicLayer/FunctionalRequirements/PlayerFR.dart';
-
 
 class PlayerPage extends StatefulWidget {
   final Map _data;
@@ -15,12 +13,14 @@ class PlayerPage extends StatefulWidget {
 }
 
 class _PlayerPageState extends State<PlayerPage> {
-  openingActions() async { //add this
-    audioPlayer = await audioCache.play('song/teste.mp3'); //add this
+  openingActions() async {
+    //add this
+    player.audioPlayer =
+        await player.audioCache.play('song/teste.mp3'); //add this
     Future.delayed(Duration(seconds: 5), () {
-      audioPlayer.stop();
+      player.audioPlayer.stop();
     });
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
