@@ -30,7 +30,7 @@ class _PlayerBarState extends State<PlayerBar> {
           icon: Icon(
             Icons.refresh,
             color: Colors.pink[200],
-            size: 40.0,
+            size: 35.0,
           ), 
           onPressed: null
         ),
@@ -56,7 +56,7 @@ class _PlayerBarState extends State<PlayerBar> {
           icon: Icon(
             Icons.access_time,
             color: Colors.pink[200],
-            size: 40.0,
+            size: 35.0,
           ), 
           onPressed: null
         ),
@@ -71,13 +71,7 @@ class VolumeBar extends StatefulWidget {
 }
 
 class _VolumeBarState extends State<VolumeBar> {
-  double _value = 1;
-
-  void setValue(value){
-    setState(() {
-      _value = value;
-    });
-  }
+  double _currentVol = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +85,13 @@ class _VolumeBarState extends State<VolumeBar> {
         ),
         Expanded(
           child: Slider.adaptive(
-            value: _value,
+            value: _currentVol,
             max: 10,
-            onChanged: (value){
-              setValue(value);
+            min: 0,
+            onChanged: (double d) {
+              setState(() {
+                _currentVol = d;
+              });
             },
           ),
         ),
@@ -110,6 +107,10 @@ class _VolumeBarState extends State<VolumeBar> {
 
 
 class Body extends StatelessWidget {
+  final Map _data;
+
+  Body(this._data);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -120,10 +121,14 @@ class Body extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                height: 250,
                 color: Colors.green[100],
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                  child: Image.asset("assets/image/mar_bg2.jpg"),
+                  child: Image.asset(
+                    "assets/image/" + _data['image'],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Container(
