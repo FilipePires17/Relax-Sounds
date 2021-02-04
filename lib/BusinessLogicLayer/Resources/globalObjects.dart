@@ -1,3 +1,3 @@
 import '../Objects/Player.dart';
 
-class GlobalObjects {}
+Player player;

@@ -1,33 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../BusinessLogicLayer/Objects/Player.dart';
+import '../../BusinessLogicLayer/Resources/globalObjects.dart';
 
-Widget playButton() {
-  Player player = Player();
-  return IconButton(
-    padding: EdgeInsets.all(0),
-    icon: (true)
-        ? Icon(
-            Icons.pause,
-            color: Colors.pink[200],
-            size: 50.0,
-          )
-        : Icon(
-            Icons.play_arrow,
-            color: Colors.pink[200],
-            size: 50.0,
-          ),
-    onPressed: () {
-      player.cache.play("chuva_audio3.wav");
-    },
+class PlayButton extends StatefulWidget {
+  @override
+  _PlayButtonState createState() => _PlayButtonState();
+}
+
+class _PlayButtonState extends State<PlayButton> {
+  Icon playBtn = Icon(
+    Icons.play_arrow,
+    color: Colors.pink[200],
+    size: 50.0,
   );
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      iconSize: 50.0,
+      padding: EdgeInsets.all(0),
+      onPressed: () {
+        if (!player.getIsPlaying()) {
+          setState(() {
+            playBtn = Icon(
+              Icons.pause,
+              color: Colors.pink[200],
+              size: 50.0,
+            );
+            player.cache.play("chuva_audio3.wav");
+            player.setIsPlaying();
+          });
+        } else {
+          setState(() {
+            playBtn = Icon(
+              Icons.play_arrow,
+              color: Colors.pink[200],
+              size: 50.0,
+            );
+            player.audioPlayer.stop();
+            player.setIsPlaying();
+          });
+        }
+      },
+      icon: playBtn,
+    );
+  }
 }
 
 Widget timer() {
   return IconButton(
     icon: Icon(
       Icons.watch_rounded,
-      size: 50,
+      size: 50.0,
     ),
     onPressed: () {},
   );
@@ -38,9 +61,11 @@ Widget controleDeReproducao() {
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
       SizedBox(
-        width: 50,
+        width: 50.0,
+        height: 50.0,
       ),
-      playButton(),
+      PlayButton(),
+      timer(),
     ],
   );
 }
