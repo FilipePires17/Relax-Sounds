@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../Widgets/HomeWidget.dart';
-import '../../BusinessLogicLayer/FunctionalRequirements/HomeFR.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,8 +7,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeFR homeFR = HomeFR();
-
   @override
   void initState() {
     super.initState();

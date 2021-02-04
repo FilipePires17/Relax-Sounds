@@ -1,89 +1,141 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:relax_sounds/ViewLayer/View/PlayerPage.dart';
+import '../../BusinessLogicLayer/FunctionalRequirements/HomeFR.dart';
 
-Widget option(context, info) {
-  return Container(
-    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-    height: 150,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-            height: 110,
-            width: 150,
-            child: GestureDetector(
-              child: Image.asset(
-                "assets/image/" + info['image'],
-                fit: BoxFit.cover,
+class Objects extends StatelessWidget {
+  final List _data;
+
+  Objects(this._data);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: _data.length,
+      itemBuilder: (context, index){
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => PlayerPage(_data[index]),
               ),
-              onTap: () {},
-            )),
-        Container(
-          height: 40,
-          width: 150,
-          child: GestureDetector(
-            child: Text(info['name']),
-            onTap: () {},
+            );
+          },
+          child: Container(
+            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+            height: 150,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 110,
+                    width: 150,
+                    child: Image.asset(
+                      "assets/image/" + _data[index]['image'], 
+                      fit: BoxFit.cover,
+                    )
+                  ),
+                  Container(
+                    height: 40,
+                    width: 150,
+                    child: Text(_data[index]['name']),
+                  )
+                ],
+              ),
           ),
-        )
-      ],
-    ),
-  );
+        );
+      }
+    );
+  }
 }
 
-Widget object(context, snapshot, indexObject) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Container(
-        height: 40,
-        color: Colors.yellow,
-        child: Text(
-          snapshot.data['$indexObject']['topic'],
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-          ),
-        ),
+class Content extends StatelessWidget {
+  final Map _data;
+
+  Content(this._data);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ListView.builder(
+        itemCount: _data.length,
+        itemBuilder: (context, index){
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(0,10,0,0),
+            child: Container(
+                height: 200,
+                color: Colors.blue,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 40,
+                      color: Colors.yellow,
+                      child: Text(
+                        _data['$index']['topic'],
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 150,
+                      child: child: GestureDetector(
+                        child: Text(_data[index]['name']),
+                        onTap: () {},
+                      ),
+                    ),
+                  ],
+                ),
+            ),
+          );
+        }
       ),
-      Divider(
-        height: 10,
-      ),
-      Container(
-        height: 150,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: snapshot.data['$indexObject']['info'].length,
-            itemBuilder: (context, index) {
-              return option(
-                  context, snapshot.data["$indexObject"]['info'][index]);
-            }),
-      )
-    ],
-  );
+    );
+  }
 }
 
-Widget body(context, snapshot) {
-  return Column(
-    children: [
-      Container(
-        child: Text("Relax Sounds"), //TODO melhorar isso pq pelo amor né
-      ),
-      Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Container(
-                  height: 200,
-                  color: Colors.blue,
-                  child: object(context, snapshot, index),
+
+class body extends StatelessWidget {
+  HomeFR homeFR = HomeFR();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder<Map>(
+        future: homeFR.getdata(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+            case ConnectionState.none:
+              return Container(
+                child: Center(
+                  child: Text("Waiting..."),
                 ),
               );
-            }),
+            default:
+              if (snapshot.hasError){
+                return Container(
+                  child: Center(
+                    child: Text("Error"),
+                  ),
+                );
+              }
+              else{
+                return Container(
+                    child: Content(snapshot.data),
+                );
+              }
+          }
+        }
       ),
-    ],
-  );
+    );
+  }
 }
