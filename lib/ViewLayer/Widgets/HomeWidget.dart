@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:relax_sounds/ViewLayer/View/PlayerPage.dart';
+import '../../BusinessLogicLayer/Resources/globalObjects.dart';
 import '../../BusinessLogicLayer/FunctionalRequirements/HomeFR.dart';
+import '../../Navigator/NavToPlayer.dart';
 
 class Objects extends StatelessWidget {
   final List _data;
@@ -16,12 +17,8 @@ class Objects extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PlayerPage(_data[index]),
-                ),
-              );
+              player.audioCache.play("song/" + _data[index]['song']);
+              Navigator.of(context).push(navToPlayer(_data, index));
             },
             child: Container(
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -99,8 +96,13 @@ class Content extends StatelessWidget {
   }
 }
 
-class Body extends StatelessWidget {
-  HomeFR homeFR = HomeFR();
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  HomeFR homeFR;
 
   @override
   Widget build(BuildContext context) {

@@ -13,14 +13,7 @@ class Player {
     isPlaying = false;
   }
 
-  bool getIsPlaying() {
-    return isPlaying;
-  }
-
   void setIsPlaying() {
-    if (isPlaying) {
-      isPlaying = false;
-    } else
-      isPlaying = true;
+    isPlaying = !isPlaying;
   }
 }

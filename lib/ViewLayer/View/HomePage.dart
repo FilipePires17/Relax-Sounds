@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeFR homeFR;
+  HomeFR homeFR = HomeFR();
   @override
   void initState() {
     super.initState();

@@ -8,15 +8,11 @@ class PlayerBar extends StatefulWidget {
 }
 
 class _PlayerBarState extends State<PlayerBar> {
-  bool _isPlaying = false;
-
-  Icon playBtn;
-
-  void setIsPlaying() {
-    setState(() {
-      _isPlaying = !_isPlaying;
-    });
-  }
+  Icon playBtn = Icon(
+    Icons.pause,
+    color: Colors.pink[200],
+    size: 50.0,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +31,14 @@ class _PlayerBarState extends State<PlayerBar> {
           iconSize: 50.0,
           padding: EdgeInsets.all(0),
           onPressed: () {
-            if (!player.getIsPlaying()) {
+            if (!player.isPlaying) {
               setState(() {
                 playBtn = Icon(
                   Icons.pause,
                   color: Colors.pink[200],
                   size: 50.0,
                 );
-                player.audioCache.play("chuva_audio3.wav");
+                player.audioPlayer.resume();
                 player.setIsPlaying();
               });
             } else {
@@ -78,7 +74,8 @@ class VolumeBar extends StatefulWidget {
 }
 
 class _VolumeBarState extends State<VolumeBar> {
-  double _currentVol = 0;
+  //double _currentVol = 0;
+  //TODO
 
   @override
   Widget build(BuildContext context) {
