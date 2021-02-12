@@ -1,6 +1,6 @@
-# relax_sounds
+# Relax sSounds
 
-A new Flutter project.
+Relax sounds is an Flutter application project to build a sound player that helps people to sleep, such as rain, waterfall, forest and urban sounds.
 
 ## Getting Started
 
